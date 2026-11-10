@@ -63,7 +63,20 @@ To use an existing Google Chrome installation instead: `PLAYWRIGHT_CHANNEL=chrom
 
 Choose **Export overview**, then select **Save as PDF** in the browser print dialog. The print layout includes all three concepts, current calculator assumptions, formulas, human review boundaries, architecture, and roadmap.
 
-The production output is a static site with hash-based navigation and relative asset paths, suitable for static hosting or GitHub Pages. Publish the contents of `dist/`; the existing `nyl.fncai.org` CNAME is preserved in the build. No deployment is performed by this project.
+The production output is a static site with hash-based navigation and relative asset paths, suitable for static hosting or GitHub Pages. Publish the contents of `dist/`; the existing `nyl.fncai.org` CNAME is preserved in the build.
+
+### GitHub Pages
+
+Vite requires a build step. Publishing the repository root directly will serve the development HTML without compiling the React application.
+
+1. In the repository, open **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+2. Commit and push `.github/workflows/deploy-pages.yml` and the application files to `main`.
+3. Open **Actions → Deploy to GitHub Pages** and wait for both `build` and `deploy` to succeed. The workflow installs dependencies, builds the app, runs the automated checks, and publishes `dist/`.
+4. Open the deployment URL shown by the workflow. Future pushes to `main` redeploy the site. You can also start a deployment with **Run workflow** on the Actions page.
+
+The existing Vite `base: './'` supports both a repository Pages URL and the custom domain. Hash-based page navigation requires no server rewrite rules.
+
+For `nyl.fncai.org`, keep **Settings → Pages → Custom domain** set to that hostname and configure its DNS CNAME to point to `Brandon-IBM.github.io`. Enable **Enforce HTTPS** when GitHub makes it available. If deployment succeeds but the custom domain fails, try the workflow's deployment URL and check the Pages DNS status. If the old page remains visible, hard-refresh the browser after deployment.
 
 ## Implementation boundaries
 
