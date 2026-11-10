@@ -1,0 +1,37 @@
+{
+  "name": "new-york-life-ai",
+  "version": "1.0.0",
+  "description": "Demo for AI use cases and problem discovery at New York Life",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build && node --test tests/*.test.js",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test:browser": "playwright test",
+    "test:unit": "node --test tests/calculations.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandon-IBM/New-York-Life-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Brandon-IBM/New-York-Life-AI/issues"
+  },
+  "homepage": "https://github.com/Brandon-IBM/New-York-Life-AI#readme",
+  "dependencies": {
+    "lucide-react": "1.47.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@vitejs/plugin-react": "6.1.1",
+    "jsdom": "26.1.0",
+    "vite": "8.3.0"
+  }
+}
